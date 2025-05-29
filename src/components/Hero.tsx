@@ -1,13 +1,17 @@
-import Image from "next/image"
-import Link from "next/link"
+import Image from "next/image";
+import Link from "next/link";
 
 interface HeroProps {
-  title: string
-  subtitle?: string
-  showButtons?: boolean
+  title: string;
+  subtitle?: string;
+  showButtons?: boolean;
 }
 
-export default function Hero({ title, subtitle, showButtons = false }: HeroProps) {
+export default function Hero({
+  title,
+  subtitle,
+  showButtons = false,
+}: HeroProps) {
   return (
     <div className="bg-primary py-20 md:py-32 relative overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -18,12 +22,14 @@ export default function Hero({ title, subtitle, showButtons = false }: HeroProps
                 {title}
               </h1>
               {subtitle && (
-                <p className="text-white/70 text-base sm:text-lg leading-relaxed mb-8 max-w-lg">{subtitle}</p>
+                <p className="text-white/70 text-base sm:text-lg leading-relaxed mb-8 max-w-lg">
+                  {subtitle}
+                </p>
               )}
               {showButtons && (
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link
-                    href="/shop"
+                    href="/user/shop"
                     className="bg-secondary text-gray-800 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold hover:bg-secondary/90 transition-colors text-center"
                   >
                     Shop Now
@@ -53,7 +59,10 @@ export default function Hero({ title, subtitle, showButtons = false }: HeroProps
                 <div className="absolute top-10 right-10 w-32 h-32 opacity-20 hidden sm:block">
                   <div className="grid grid-cols-8 gap-2">
                     {Array.from({ length: 64 }).map((_, i) => (
-                      <div key={i} className="w-1 h-1 bg-white/30 rounded-full"></div>
+                      <div
+                        key={i}
+                        className="w-1 h-1 bg-white/30 rounded-full"
+                      ></div>
                     ))}
                   </div>
                 </div>
@@ -63,5 +72,5 @@ export default function Hero({ title, subtitle, showButtons = false }: HeroProps
         </div>
       </div>
     </div>
-  )
+  );
 }

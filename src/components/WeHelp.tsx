@@ -1,5 +1,5 @@
-import Image from "next/image"
-import Link from "next/link"
+import Image from "next/image";
+import Link from "next/link";
 
 export default function WeHelp() {
   return (
@@ -12,7 +12,10 @@ export default function WeHelp() {
             <div className="absolute -top-16 -left-16 w-32 h-32 opacity-30 z-0">
               <div className="grid grid-cols-8 gap-2">
                 {Array.from({ length: 64 }).map((_, i) => (
-                  <div key={i} className="w-2 h-2 bg-green-600 rounded-full"></div>
+                  <div
+                    key={i}
+                    className="w-2 h-2 bg-green-600 rounded-full"
+                  ></div>
                 ))}
               </div>
             </div>
@@ -58,9 +61,10 @@ export default function WeHelp() {
             </h2>
 
             <p className="text-gray-600 text-lg leading-relaxed">
-              Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac
-              aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant morbi
-              tristique senectus et netus et malesuada
+              Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio
+              quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam
+              vulputate velit imperdiet dolor tempor tristique. Pellentesque
+              habitant morbi tristique senectus et netus et malesuada
             </p>
 
             {/* Bullet points in 2 columns */}
@@ -68,27 +72,35 @@ export default function WeHelp() {
               <div className="space-y-4">
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-green-600 rounded-full mt-3 flex-shrink-0"></div>
-                  <span className="text-gray-600">Donec vitae odio quis nisl dapibus malesuada</span>
+                  <span className="text-gray-600">
+                    Donec vitae odio quis nisl dapibus malesuada
+                  </span>
                 </div>
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-green-600 rounded-full mt-3 flex-shrink-0"></div>
-                  <span className="text-gray-600">Donec vitae odio quis nisl dapibus malesuada</span>
+                  <span className="text-gray-600">
+                    Donec vitae odio quis nisl dapibus malesuada
+                  </span>
                 </div>
               </div>
               <div className="space-y-4">
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-green-600 rounded-full mt-3 flex-shrink-0"></div>
-                  <span className="text-gray-600">Donec vitae odio quis nisl dapibus malesuada</span>
+                  <span className="text-gray-600">
+                    Donec vitae odio quis nisl dapibus malesuada
+                  </span>
                 </div>
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-green-600 rounded-full mt-3 flex-shrink-0"></div>
-                  <span className="text-gray-600">Donec vitae odio quis nisl dapibus malesuada</span>
+                  <span className="text-gray-600">
+                    Donec vitae odio quis nisl dapibus malesuada
+                  </span>
                 </div>
               </div>
             </div>
 
             <Link
-              href="/shop"
+              href="/user/shop"
               className="bg-gray-800 text-white px-8 py-4 rounded-full font-semibold hover:bg-gray-700 transition-colors inline-block"
             >
               Explore
@@ -97,5 +109,5 @@ export default function WeHelp() {
         </div>
       </div>
     </div>
-  )
+  );
 }
