@@ -13,7 +13,7 @@ export default function Footer() {
           <div className="md:col-span-2 lg:col-span-5 xl:col-span-4">
             <div className="mb-6">
               <Link href="/" className="text-green-800 text-3xl font-medium">
-                Furni<span className="opacity-40">.</span>
+                Inertia<span className="opacity-40">.</span>
               </Link>
             </div>
             <p className="text-gray-600 mb-8 max-w-md">

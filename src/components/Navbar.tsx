@@ -48,7 +48,7 @@ export default function Navbar() {
         <div className="flex h-20 items-center justify-between">
           <div className="flex lg:flex-1">
             <Link href="/" className="-m-1.5 p-1.5">
-              <span className="text-white text-2xl font-bold">Furni.</span>
+              <span className="text-white text-2xl font-bold">Inertia</span>
             </Link>
           </div>
 
@@ -88,7 +88,7 @@ export default function Navbar() {
               >
                 Admin Dashboard
               </Link>
-              <DropdownMenu>
+              <DropdownMenu modal={false}>
                 <DropdownMenuTrigger className="text-white/70 hover:text-white transition-colors p-2">
                   <User className="h-5 w-5" />
                 </DropdownMenuTrigger>
@@ -135,7 +135,7 @@ export default function Navbar() {
                 className="-m-1.5 p-1.5"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                <span className="text-white text-2xl font-bold">Furni.</span>
+                <span className="text-white text-2xl font-bold">Inertia.</span>
               </Link>
               <button
                 type="button"

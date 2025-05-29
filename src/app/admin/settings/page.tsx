@@ -46,7 +46,7 @@ export default function AdminSettings() {
     <div className="bg-gray-50 min-h-screen">
       {/* Admin Header */}
       <AdminHeader
-        title="Furni Admin"
+        title="Inertia Admin"
         subtitle="Management Panel"
         searchPlaceholder="Search settings..."
       />
@@ -157,11 +157,11 @@ export default function AdminSettings() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
                         <Label htmlFor="storeName">Store Name</Label>
-                        <Input id="storeName" defaultValue="Furni Store" />
+                        <Input id="storeName" defaultValue="Inertia Store" />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="storeUrl">Store URL</Label>
-                        <Input id="storeUrl" defaultValue="https://furni.com" />
+                        <Input id="storeUrl" defaultValue="https://inertia.com" />
                       </div>
                     </div>
 
@@ -297,7 +297,7 @@ export default function AdminSettings() {
 
                     <div className="space-y-2">
                       <Label htmlFor="fromEmail">From Email Address</Label>
-                      <Input id="fromEmail" placeholder="noreply@furni.com" />
+                      <Input id="fromEmail" placeholder="noreply@inertia.com" />
                     </div>
 
                     <Button variant="outline">

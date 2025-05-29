@@ -47,7 +47,7 @@ export default function AdminSidebar() {
           F
         </div>
         <div>
-          <h3 className="font-bold text-gray-900">Furni Admin</h3>
+          <h3 className="font-bold text-gray-900">Inertia Admin</h3>
           <p className="text-sm text-gray-600">Management Panel</p>
         </div>
       </div>

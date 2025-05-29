@@ -191,7 +191,7 @@ export default function AdminDashboard() {
                   F
                 </div>
                 <div>
-                  <h1 className="font-bold text-gray-900">Furni Admin</h1>
+                  <h1 className="font-bold text-gray-900">Inertia Admin</h1>
                   <p className="text-xs text-gray-600">Management Panel</p>
                 </div>
               </div>

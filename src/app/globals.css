@@ -78,6 +78,12 @@
   border-color: hsl(var(--border));
 }
 
+/* Prevent layout shift when dropdown opens */
+html {
+  /* Always reserve space for scrollbar to prevent layout shift */
+  overflow-y: scroll;
+}
+
 body {
   color: hsl(var(--foreground));
   background: hsl(var(--background));
@@ -86,6 +92,24 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+}
+
+/* Prevent Radix components from shifting layout when locking body scroll */
+[data-radix-scroll-area-viewport] {
+  scrollbar-gutter: stable;
+}
+
+/* Ensure consistent scrollbar appearance */
+body:has([data-radix-scroll-area-viewport]) {
+  scrollbar-gutter: stable;
+}
+
+/* Alternative approach for browsers that support it */
+@supports (scrollbar-gutter: stable) {
+  html {
+    scrollbar-gutter: stable;
+    overflow-y: auto;
+  }
 }
 
 @layer utilities {

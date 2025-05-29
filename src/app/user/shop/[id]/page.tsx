@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import React, { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowLeft, Star, Heart, ShoppingCart, Minus, Plus, Truck, Shield, RotateCcw } from "lucide-react"
@@ -100,8 +100,9 @@ const relatedProducts = [
   { id: "1", name: "Modern Desk Chair", price: 65.0, image: "/images/product-1.png" },
 ]
 
-export default function ProductDetail({ params }: { params: { id: string } }) {
-  const product = getProduct(params.id)
+export default function ProductDetail({ params }: { params: Promise<{ id: string }> }) {
+  const resolvedParams = React.use(params)
+  const product = getProduct(resolvedParams.id)
   const [selectedImage, setSelectedImage] = useState(0)
   const [quantity, setQuantity] = useState(1)
   const [activeTab, setActiveTab] = useState("description")

@@ -1,3 +1,4 @@
+import React from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowLeft, Calendar, User, Tag } from "lucide-react"
@@ -79,8 +80,9 @@ const relatedPosts = [
   { id: "1", title: "Modern Living Room Design Tips", image: "/images/post-1.jpg" },
 ]
 
-export default function BlogDetail({ params }: { params: { id: string } }) {
-  const post = getBlogPost(params.id)
+export default function BlogDetail({ params }: { params: Promise<{ id: string }> }) {
+  const resolvedParams = React.use(params)
+  const post = getBlogPost(resolvedParams.id)
 
   return (
     <div className="pt-20">
@@ -193,7 +195,7 @@ export default function BlogDetail({ params }: { params: { id: string } }) {
                     .filter((p) => p.id !== post.id)
                     .slice(0, 3)
                     .map((relatedPost) => (
-                      <Link key={relatedPost.id} href={`/blog/${relatedPost.id}`} className="flex gap-3 group">
+                      <Link key={relatedPost.id} href={`/user/blog/${relatedPost.id}`} className="flex gap-3 group">
                         <Image
                           src={relatedPost.image || "/placeholder.svg"}
                           alt={relatedPost.title}

@@ -17,8 +17,8 @@ export default function ClientLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
-        <title>Furni - Modern Interior Design Studio</title>
-        <meta name="description" content="Furni Free Bootstrap 5 Template for Furniture and Interior Design Websites" />
+        <title>Inertia - Modern Interior Design Studio</title>
+        <meta name="description" content="Inertia Free Bootstrap 5 Template for Furniture and Interior Design Websites" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
         <meta name="generator" content="v0.dev" />
       </head>

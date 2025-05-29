@@ -51,7 +51,7 @@ export default function BlogGrid() {
           {posts.map((post, index) => (
             <div key={index} className="group">
               <div className="mb-5">
-                <Link href={`/blog/${index + 1}`}>
+                <Link href={`/user/blog/${index + 1}`}>
                   <Image
                     src={post.image || "/placeholder.svg"}
                     alt={post.title}
@@ -62,7 +62,7 @@ export default function BlogGrid() {
                 </Link>
               </div>
               <div className="px-4">
-                <Link href={`/blog/${index + 1}`}>
+                <Link href={`/user/blog/${index + 1}`}>
                   <h3 className="text-gray-800 font-semibold text-lg mb-2 group-hover:text-gray-600 transition-colors">
                     {post.title}
                   </h3>

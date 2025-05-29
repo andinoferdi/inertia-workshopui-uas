@@ -1,3 +1,4 @@
+import React from "react"
 import AccountSidebar from "@/components/AccountSidebar"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -103,7 +104,9 @@ const getStatusColor = (status: string) => {
   }
 }
 
-export default function OrderDetailPage({ params }: { params: { id: string } }) {
+export default function OrderDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const resolvedParams = React.use(params)
+  
   return (
     <div className="pt-20">
       <div className="bg-gray-50 py-10">
@@ -126,7 +129,7 @@ export default function OrderDetailPage({ params }: { params: { id: string } }) 
                 </Button>
               </Link>
               <div>
-                <h2 className="text-2xl font-bold text-gray-800">Order #{params.id}</h2>
+                <h2 className="text-2xl font-bold text-gray-800">Order #{resolvedParams.id}</h2>
                 <p className="text-gray-500">Placed on {new Date(orderData.orderDate).toLocaleDateString("id-ID")}</p>
               </div>
             </div>

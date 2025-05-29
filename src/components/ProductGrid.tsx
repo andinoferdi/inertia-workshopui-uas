@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-import { Eye } from "lucide-react"
+import { Eye, Plus } from "lucide-react"
 
 const products = [
   { name: "Nordic Chair", price: "$50.00", image: "/images/product-3.png" },
@@ -33,9 +33,9 @@ export default function ProductGrid() {
                 <h3 className="text-gray-800 font-semibold text-lg mb-2">{product.name}</h3>
                 <p className="text-gray-800 font-bold text-xl">{product.price}</p>
 
-                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <button className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-700 transition-colors">
-                    <span className="text-white text-xl">+</span>
+                <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex flex-row gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <button className="w-10 h-10 bg-gray-600 rounded-full flex items-center justify-center hover:bg-gray-500 transition-colors">
+                    <Plus className="text-white w-4 h-4" />
                   </button>
                   <Link
                     href={`/user/shop/${index + 1}`}

@@ -164,7 +164,7 @@ export default function ProductManagement() {
   return (
     <div className="bg-gray-50 min-h-screen">
       {/* Admin Header */}
-      <AdminHeader title="Furni Admin" subtitle="Management Panel" searchPlaceholder="Search products..." />
+      <AdminHeader title="Inertia Admin" subtitle="Management Panel" searchPlaceholder="Search products..." />
 
       <div className="container mx-auto px-4 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
