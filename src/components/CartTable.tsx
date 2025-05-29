@@ -94,7 +94,7 @@ export default function CartTable() {
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mt-12 gap-8">
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
-              href="/shop"
+              href="/user/shop"
               className="bg-gray-800 text-white px-6 sm:px-8 py-3 rounded-full font-semibold hover:bg-gray-700 transition-colors text-center"
             >
               Continue Shopping
@@ -117,7 +117,7 @@ export default function CartTable() {
               </div>
             </div>
             <Link
-              href="/checkout"
+              href="/user/checkout"
               className="w-full bg-gray-800 text-white py-3 rounded-full font-semibold hover:bg-gray-700 transition-colors mt-6 block text-center"
             >
               Proceed To Checkout

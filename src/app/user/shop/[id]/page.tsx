@@ -115,7 +115,7 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
       {/* Breadcrumb */}
       <div className="bg-gray-50 py-8">
         <div className="container mx-auto px-4">
-          <Link href="/shop" className="inline-flex items-center text-primary hover:text-primary/80 transition-colors">
+          <Link href="/user/shop" className="inline-flex items-center text-primary hover:text-primary/80 transition-colors">
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Shop
           </Link>
@@ -330,7 +330,7 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
               .filter((p) => p.id !== product.id)
               .slice(0, 3)
               .map((relatedProduct) => (
-                <Link key={relatedProduct.id} href={`/shop/${relatedProduct.id}`} className="group">
+                <Link key={relatedProduct.id} href={`/user/shop/${relatedProduct.id}`} className="group">
                   <div className="bg-gray-50 rounded-2xl p-6 mb-4 group-hover:bg-gray-100 transition-colors">
                     <Image
                       src={relatedProduct.image || "/placeholder.svg"}

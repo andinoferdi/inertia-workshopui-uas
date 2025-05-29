@@ -25,7 +25,7 @@ export default function CheckoutForm() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    router.push("/thankyou")
+    router.push("/user/thankyou")
   }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {

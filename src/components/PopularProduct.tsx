@@ -35,7 +35,7 @@ export default function PopularProduct() {
             <div key={index} className="flex items-start space-x-6 group">
               {/* Small Product Image */}
               <div className="flex-shrink-0 relative">
-                <Link href={`/shop/${product.id}`}>
+                <Link href={`/user/shop/${product.id}`}>
                   <Image
                     src={product.image || "/placeholder.svg"}
                     alt={product.name}
@@ -51,7 +51,7 @@ export default function PopularProduct() {
                     <span className="text-white text-sm">+</span>
                   </button>
                   <Link
-                    href={`/shop/${product.id}`}
+                    href={`/user/shop/${product.id}`}
                     className="w-6 h-6 bg-gray-600 rounded-full flex items-center justify-center hover:bg-gray-500 transition-colors"
                   >
                     <Eye className="text-white w-3 h-3" />
@@ -66,7 +66,7 @@ export default function PopularProduct() {
                 <div className="flex items-center justify-between">
                   <span className="text-gray-900 font-bold">{product.price}</span>
                   <Link
-                    href={`/shop/${product.id}`}
+                    href={`/user/shop/${product.id}`}
                     className="text-primary hover:text-primary/80 font-medium text-sm transition-colors"
                   >
                     Read More

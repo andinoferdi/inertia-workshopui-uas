@@ -36,7 +36,7 @@ export default function ProductSection() {
               dolor tempor tristique.
             </p>
             <Link
-              href="/shop"
+              href="/user/shop"
               className="bg-gray-800 text-white px-8 py-4 rounded-full font-semibold hover:bg-gray-700 transition-colors inline-block"
             >
               Explore
@@ -45,7 +45,7 @@ export default function ProductSection() {
 
           {products.map((product) => (
             <div key={product.id} className="lg:col-span-1">
-              <Link href="/cart" className="group block text-center relative pb-16 cursor-pointer">
+              <Link href="/user/cart" className="group block text-center relative pb-16 cursor-pointer">
                 <div className="mb-8 relative">
                   <Image
                     src={product.image || "/placeholder.svg"}

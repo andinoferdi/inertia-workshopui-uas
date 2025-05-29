@@ -57,7 +57,7 @@ export default function WishlistPage() {
                 <Heart className="h-16 w-16 text-gray-300 mx-auto mb-4" />
                 <h3 className="text-lg font-medium text-gray-900 mb-2">Your wishlist is empty</h3>
                 <p className="text-gray-500 mb-4">Save items you love to your wishlist</p>
-                <Link href="/shop">
+                <Link href="/user/shop">
                   <Button>Continue Shopping</Button>
                 </Link>
               </div>
@@ -67,7 +67,7 @@ export default function WishlistPage() {
                   <Card key={item.id} className="group hover:shadow-lg transition-shadow">
                     <CardContent className="p-4">
                       <div className="relative mb-4">
-                        <Link href={`/shop/${item.id}`}>
+                        <Link href={`/user/shop/${item.id}`}>
                           <Image
                             src={item.image || "/placeholder.svg"}
                             alt={item.name}
@@ -80,7 +80,7 @@ export default function WishlistPage() {
                           <Heart className="h-4 w-4 text-red-500 fill-current" />
                         </button>
                         <div className="absolute bottom-2 right-2 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                          <Link href={`/shop/${item.id}`}>
+                          <Link href={`/user/shop/${item.id}`}>
                             <button className="p-2 bg-white rounded-full shadow-md hover:bg-gray-50 transition-colors">
                               <Eye className="h-4 w-4 text-gray-600" />
                             </button>

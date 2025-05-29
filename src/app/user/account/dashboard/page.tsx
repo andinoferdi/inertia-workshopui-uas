@@ -113,7 +113,7 @@ export default function AccountDashboard() {
             <div className="bg-white border border-gray-200 rounded-2xl p-6">
               <div className="flex items-center justify-between mb-6">
                 <h3 className="text-xl font-bold text-gray-800">Recent Orders</h3>
-                <Link href="/account/orders" className="text-primary hover:text-primary/80 font-medium">
+                <Link href="/user/account/orders" className="text-primary hover:text-primary/80 font-medium">
                   View All
                 </Link>
               </div>
@@ -158,7 +158,7 @@ export default function AccountDashboard() {
             <div className="bg-white border border-gray-200 rounded-2xl p-6">
               <div className="flex items-center justify-between mb-6">
                 <h3 className="text-xl font-bold text-gray-800">Recently Viewed</h3>
-                <Link href="/shop" className="text-primary hover:text-primary/80 font-medium">
+                <Link href="/user/shop" className="text-primary hover:text-primary/80 font-medium">
                   Browse More
                 </Link>
               </div>
@@ -179,7 +179,7 @@ export default function AccountDashboard() {
             {/* Quick Actions */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <Link
-                href="/shop"
+                href="/user/shop"
                 className="bg-primary text-white rounded-2xl p-6 hover:bg-primary/90 transition-colors"
               >
                 <ShoppingCart className="w-8 h-8 mb-4" />
@@ -188,7 +188,7 @@ export default function AccountDashboard() {
               </Link>
 
               <Link
-                href="/account/orders"
+                href="/user/account/orders"
                 className="bg-gray-800 text-white rounded-2xl p-6 hover:bg-gray-700 transition-colors"
               >
                 <Package className="w-8 h-8 mb-4" />

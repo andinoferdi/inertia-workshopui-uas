@@ -141,7 +141,7 @@ export default function OrderHistory() {
                     </button>
                     {order.status === "Delivered" && (
                       <Link
-                        href="/shop"
+                        href="/user/shop"
                         className="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors"
                       >
                         Reorder Items
@@ -159,7 +159,7 @@ export default function OrderHistory() {
                 <h3 className="text-xl font-semibold text-gray-800 mb-2">No orders yet</h3>
                 <p className="text-gray-600 mb-6">Start shopping to see your orders here</p>
                 <Link
-                  href="/shop"
+                  href="/user/shop"
                   className="bg-primary text-white px-6 py-3 rounded-full font-semibold hover:bg-primary/90 transition-colors"
                 >
                   Start Shopping

@@ -21,7 +21,7 @@ export default function ProductGrid() {
           {products.map((product, index) => (
             <div key={index} className="flex flex-col">
               <div className="group block text-center relative pb-12 cursor-pointer h-full">
-                <Link href={`/shop/${index + 1}`} className="block mb-6 sm:mb-8 relative">
+                <Link href={`/user/shop/${index + 1}`} className="block mb-6 sm:mb-8 relative">
                   <Image
                     src={product.image || "/placeholder.svg"}
                     alt={product.name}
@@ -38,7 +38,7 @@ export default function ProductGrid() {
                     <span className="text-white text-xl">+</span>
                   </button>
                   <Link
-                    href={`/shop/${index + 1}`}
+                    href={`/user/shop/${index + 1}`}
                     className="w-10 h-10 bg-gray-600 rounded-full flex items-center justify-center hover:bg-gray-500 transition-colors"
                   >
                     <Eye className="text-white w-4 h-4" />

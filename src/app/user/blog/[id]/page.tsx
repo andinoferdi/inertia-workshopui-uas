@@ -88,7 +88,7 @@ export default function BlogDetail({ params }: { params: { id: string } }) {
       <div className="bg-gray-50 py-16">
         <div className="container mx-auto px-4">
           <Link
-            href="/blog"
+            href="/user/blog"
             className="inline-flex items-center text-primary hover:text-primary/80 transition-colors mb-6"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />

@@ -28,7 +28,7 @@ export default function BlogSection() {
       <div className="container mx-auto px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-16 gap-6">
           <h2 className="text-gray-800 text-4xl lg:text-5xl font-bold">Recent Blog</h2>
-          <Link href="/blog" className="text-gray-800 font-semibold hover:text-gray-600 transition-colors">
+          <Link href="/user/blog" className="text-gray-800 font-semibold hover:text-gray-600 transition-colors">
             View All Posts
           </Link>
         </div>
