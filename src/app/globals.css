@@ -1,7 +1,6 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
-
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   --background: 0 0% 100%;
@@ -78,17 +77,29 @@
   border-color: hsl(var(--border));
 }
 
+/* Apply modern font stack similar to Poppins */
+html,
+body,
+button,
+input,
+select,
+textarea {
+  font-family: "Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    sans-serif;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  font-variation-settings: normal;
+}
+
 /* Prevent layout shift when dropdown opens */
 html {
   /* Always reserve space for scrollbar to prevent layout shift */
   overflow-y: scroll;
+  scroll-behavior: smooth;
 }
 
 body {
   color: hsl(var(--foreground));
   background: hsl(var(--background));
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue",
-    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
@@ -150,5 +161,209 @@ body:has([data-radix-scroll-area-viewport]) {
   .touch-target {
     min-height: 44px;
     min-width: 44px;
+  }
+}
+
+/* Neon Effects - Very Subtle */
+.neon-green {
+  text-shadow: 0 0 1px #10b981, 0 0 2px rgba(16, 185, 129, 0.3);
+  animation: subtle-neon-flicker 3s infinite alternate;
+}
+
+.neon-white {
+  text-shadow: 0 0 1px #ffffff, 0 0 2px rgba(255, 255, 255, 0.3);
+  animation: subtle-neon-flicker 3s infinite alternate;
+}
+
+.neon-blue {
+  text-shadow: 0 0 1px #3b82f6, 0 0 2px rgba(59, 130, 246, 0.3);
+  animation: subtle-neon-flicker 3s infinite alternate;
+}
+
+@keyframes subtle-neon-flicker {
+  0%,
+  100% {
+    text-shadow: 0 0 1px currentColor, 0 0 2px rgba(currentColor, 0.3);
+  }
+  50% {
+    text-shadow: 0 0 0.5px currentColor, 0 0 1px rgba(currentColor, 0.2);
+  }
+}
+
+/* Button Effects - Subtle */
+.neon-button {
+  box-shadow: 0 0 3px rgba(16, 185, 129, 0.2), 0 0 5px rgba(16, 185, 129, 0.1);
+  transition: all 0.3s ease;
+}
+
+.neon-button:hover {
+  box-shadow: 0 0 5px rgba(16, 185, 129, 0.3), 0 0 10px rgba(16, 185, 129, 0.2);
+}
+
+.neon-button-dark {
+  box-shadow: 0 0 3px rgba(55, 65, 81, 0.2);
+  transition: all 0.3s ease;
+}
+
+.neon-button-dark:hover {
+  box-shadow: 0 0 5px rgba(16, 185, 129, 0.3);
+}
+
+/* Icon Effects - Subtle */
+.neon-icon {
+  box-shadow: 0 0 3px rgba(16, 185, 129, 0.1);
+  transition: all 0.3s ease;
+}
+
+.neon-icon:hover {
+  box-shadow: 0 0 5px rgba(16, 185, 129, 0.2);
+}
+
+.neon-icon-bg {
+  box-shadow: 0 0 4px rgba(16, 185, 129, 0.1);
+  transition: all 0.3s ease;
+}
+
+.neon-icon-bg:hover {
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.15);
+}
+
+/* Text Effects - Subtle */
+.neon-price {
+  text-shadow: 0 0 2px rgba(16, 185, 129, 0.1);
+  transition: all 0.3s ease;
+}
+
+.neon-author {
+  color: #10b981;
+  text-shadow: 0 0 1px rgba(16, 185, 129, 0.1);
+}
+
+.neon-link {
+  text-shadow: 0 0 1px rgba(16, 185, 129, 0.1);
+  transition: all 0.3s ease;
+}
+
+.neon-link:hover {
+  text-shadow: 0 0 2px rgba(16, 185, 129, 0.2);
+}
+
+/* Floating Animation */
+.floating-element {
+  animation: floating 6s ease-in-out infinite;
+}
+
+@keyframes floating {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* Animated Dots */
+.animated-dots {
+  animation: pulse-dots 3s ease-in-out infinite;
+}
+
+@keyframes pulse-dots {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.1);
+  }
+}
+
+/* Card Hover Effects */
+.product-card {
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.product-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card {
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.feature-card:hover::before {
+  left: 100%;
+}
+
+.blog-card {
+  transition: all 0.3s ease;
+}
+
+.blog-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Responsive Neon Effects */
+@media (max-width: 768px) {
+  .neon-green,
+  .neon-white,
+  .neon-blue {
+    text-shadow: 0 0 1px currentColor;
+  }
+
+  .neon-button,
+  .neon-button-dark {
+    box-shadow: 0 0 2px rgba(16, 185, 129, 0.1);
+  }
+}
+
+/* Smooth Scrolling */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Performance Optimizations */
+.product-card,
+.feature-card,
+.blog-card {
+  will-change: transform;
+}
+
+.floating-element {
+  will-change: transform;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .floating-element,
+  .animated-dots,
+  .neon-green,
+  .neon-white,
+  .neon-blue {
+    animation: none;
+  }
+
+  .product-card,
+  .feature-card,
+  .blog-card {
+    transition: none;
   }
 }

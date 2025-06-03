@@ -1,7 +1,12 @@
-import React from "react"
+"use client"
+
+import React, { useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowLeft, Calendar, User, Tag } from "lucide-react"
+import ParticleBackground from "@/components/ParticleBackground"
+import NeonText from "@/components/NeonText"
+import ParallaxSection from "@/components/ParallaxSection"
 
 // Mock data for blog post
 const getBlogPost = (id: string) => {
@@ -84,138 +89,188 @@ export default function BlogDetail({ params }: { params: Promise<{ id: string }>
   const resolvedParams = React.use(params)
   const post = getBlogPost(resolvedParams.id)
 
+  useEffect(() => {
+    // Initialize AOS
+    if (typeof window !== "undefined") {
+      import("aos").then((AOS) => {
+        AOS.init({
+          duration: 1000,
+          once: true,
+          offset: 100,
+        })
+      })
+    }
+  }, [])
+
   return (
-    <div className="pt-20">
+    <div className="pt-20 relative overflow-hidden">
+      {/* Particle Background */}
+      <div className="absolute inset-0 z-0">
+        <ParticleBackground />
+      </div>
+
       {/* Header */}
-      <div className="bg-gray-50 py-16">
-        <div className="container mx-auto px-4">
-          <Link
-            href="/user/blog"
-            className="inline-flex items-center text-primary hover:text-primary/80 transition-colors mb-6"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Blog
-          </Link>
+      <ParallaxSection speed={0.5}>
+        <div className="bg-gray-50 py-16 relative">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_70%,rgba(34,197,94,0.05),transparent_50%)]"></div>
+          <div className="container mx-auto px-4 relative z-10">
+            <Link
+              href="/user/blog"
+              className="inline-flex items-center text-primary hover:text-primary/80 transition-all duration-300 mb-6 transform hover:scale-105"
+              data-aos="fade-right"
+            >
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              Back to Blog
+            </Link>
 
-          <div className="max-w-4xl">
-            <div className="flex items-center gap-4 text-sm text-gray-600 mb-4">
-              <span className="bg-primary text-white px-3 py-1 rounded-full text-xs">{post.category}</span>
-              <span className="flex items-center gap-1">
-                <Calendar className="w-4 h-4" />
-                {post.date}
-              </span>
-              <span className="flex items-center gap-1">
-                <User className="w-4 h-4" />
-                {post.author}
-              </span>
-              <span>{post.readTime}</span>
+            <div className="max-w-4xl" data-aos="fade-up">
+              <div className="flex items-center gap-4 text-sm text-gray-600 mb-4">
+                <span className="bg-primary text-white px-3 py-1 rounded-full text-xs animate-pulse">
+                  {post.category}
+                </span>
+                <span className="flex items-center gap-1">
+                  <Calendar className="w-4 h-4" />
+                  {post.date}
+                </span>
+                <span className="flex items-center gap-1">
+                  <User className="w-4 h-4" />
+                  {post.author}
+                </span>
+                <span>{post.readTime}</span>
+              </div>
+
+              <NeonText
+                text={post.title}
+                className="text-4xl lg:text-5xl font-bold text-gray-800 mb-6"
+                intensity="subtle"
+              />
             </div>
-
-            <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-6">{post.title}</h1>
           </div>
         </div>
-      </div>
+      </ParallaxSection>
 
       {/* Featured Image */}
-      <div className="container mx-auto px-4 -mt-8 mb-12">
-        <div className="max-w-4xl mx-auto">
-          <Image
-            src={post.image || "/placeholder.svg"}
-            alt={post.title}
-            width={800}
-            height={400}
-            className="w-full h-96 object-cover rounded-2xl shadow-lg"
-          />
+      <ParallaxSection speed={0.3}>
+        <div className="container mx-auto px-4 -mt-8 mb-12 relative z-10">
+          <div className="max-w-4xl mx-auto" data-aos="zoom-in">
+            <Image
+              src={post.image || "/placeholder.svg"}
+              alt={post.title}
+              width={800}
+              height={400}
+              className="w-full h-96 object-cover rounded-2xl shadow-lg transform hover:scale-105 transition-transform duration-300"
+            />
+          </div>
         </div>
-      </div>
+      </ParallaxSection>
 
       {/* Content */}
-      <div className="container mx-auto px-4 pb-20">
-        <div className="max-w-4xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            {/* Main Content */}
-            <div className="lg:col-span-2">
-              <div
-                className="prose prose-lg max-w-none"
-                dangerouslySetInnerHTML={{ __html: post.content }}
-                style={{
-                  lineHeight: "1.8",
-                  fontSize: "1.1rem",
-                  color: "#4a5568",
-                }}
-              />
+      <ParallaxSection speed={0.2}>
+        <div className="container mx-auto px-4 pb-20 relative z-10">
+          <div className="max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+              {/* Main Content */}
+              <div className="lg:col-span-2" data-aos="fade-right">
+                <div
+                  className="prose prose-lg max-w-none"
+                  dangerouslySetInnerHTML={{ __html: post.content }}
+                  style={{
+                    lineHeight: "1.8",
+                    fontSize: "1.1rem",
+                    color: "#4a5568",
+                  }}
+                />
 
-              {/* Tags */}
-              <div className="mt-12 pt-8 border-t border-gray-200">
-                <div className="flex items-center gap-2 mb-4">
-                  <Tag className="w-4 h-4 text-gray-600" />
-                  <span className="text-gray-600 font-medium">Tags:</span>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {["Interior Design", "Furniture", "Home Decor", "Tips"].map((tag) => (
-                    <span
-                      key={tag}
-                      className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm hover:bg-gray-200 transition-colors cursor-pointer"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Sidebar */}
-            <div className="lg:col-span-1">
-              {/* Author Info */}
-              <div className="bg-gray-50 rounded-2xl p-6 mb-8">
-                <h3 className="font-semibold text-gray-800 mb-4">About the Author</h3>
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-semibold">
-                    {post.author
-                      .split(" ")
-                      .map((n) => n[0])
-                      .join("")}
+                {/* Tags */}
+                <div className="mt-12 pt-8 border-t border-gray-200" data-aos="fade-up">
+                  <div className="flex items-center gap-2 mb-4">
+                    <Tag className="w-4 h-4 text-gray-600" />
+                    <span className="text-gray-600 font-medium">Tags:</span>
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-800">{post.author}</h4>
-                    <p className="text-gray-600 text-sm">Interior Design Expert</p>
-                  </div>
-                </div>
-                <p className="text-gray-600 text-sm">
-                  Passionate about creating beautiful and functional living spaces. Sharing tips and insights from years
-                  of experience in interior design.
-                </p>
-              </div>
-
-              {/* Related Posts */}
-              <div className="bg-white border border-gray-200 rounded-2xl p-6">
-                <h3 className="font-semibold text-gray-800 mb-6">Related Articles</h3>
-                <div className="space-y-4">
-                  {relatedPosts
-                    .filter((p) => p.id !== post.id)
-                    .slice(0, 3)
-                    .map((relatedPost) => (
-                      <Link key={relatedPost.id} href={`/user/blog/${relatedPost.id}`} className="flex gap-3 group">
-                        <Image
-                          src={relatedPost.image || "/placeholder.svg"}
-                          alt={relatedPost.title}
-                          width={80}
-                          height={60}
-                          className="w-20 h-15 object-cover rounded-lg flex-shrink-0"
-                        />
-                        <div>
-                          <h4 className="text-sm font-medium text-gray-800 group-hover:text-primary transition-colors line-clamp-2">
-                            {relatedPost.title}
-                          </h4>
-                        </div>
-                      </Link>
+                  <div className="flex flex-wrap gap-2">
+                    {["Interior Design", "Furniture", "Home Decor", "Tips"].map((tag, index) => (
+                      <span
+                        key={tag}
+                        className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm hover:bg-gray-200 transition-all duration-300 cursor-pointer transform hover:scale-105"
+                        data-aos="fade-up"
+                        data-aos-delay={index * 100}
+                      >
+                        {tag}
+                      </span>
                     ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Sidebar */}
+              <div className="lg:col-span-1" data-aos="fade-left">
+                {/* Author Info */}
+                <div className="bg-gray-50 rounded-2xl p-6 mb-8 transform hover:scale-105 transition-all duration-300">
+                  <h3 className="font-semibold text-gray-800 mb-4">About the Author</h3>
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-semibold">
+                      {post.author
+                        .split(" ")
+                        .map((n) => n[0])
+                        .join("")}
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-800">{post.author}</h4>
+                      <p className="text-gray-600 text-sm">Interior Design Expert</p>
+                    </div>
+                  </div>
+                  <p className="text-gray-600 text-sm">
+                    Passionate about creating beautiful and functional living spaces. Sharing tips and insights from
+                    years of experience in interior design.
+                  </p>
+                </div>
+
+                {/* Related Posts */}
+                <div className="bg-white border border-gray-200 rounded-2xl p-6 transform hover:scale-105 transition-all duration-300">
+                  <NeonText text="Related Articles" className="font-semibold text-gray-800 mb-6" intensity="subtle" />
+                  <div className="space-y-4">
+                    {relatedPosts
+                      .filter((p) => p.id !== post.id)
+                      .slice(0, 3)
+                      .map((relatedPost, index) => (
+                        <Link
+                          key={relatedPost.id}
+                          href={`/user/blog/${relatedPost.id}`}
+                          className="flex gap-3 group transform hover:scale-105 transition-all duration-300"
+                          data-aos="fade-up"
+                          data-aos-delay={index * 100}
+                        >
+                          <Image
+                            src={relatedPost.image || "/placeholder.svg"}
+                            alt={relatedPost.title}
+                            width={80}
+                            height={60}
+                            className="w-20 h-15 object-cover rounded-lg flex-shrink-0"
+                          />
+                          <div>
+                            <h4 className="text-sm font-medium text-gray-800 group-hover:text-primary transition-colors line-clamp-2">
+                              {relatedPost.title}
+                            </h4>
+                          </div>
+                        </Link>
+                      ))}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </ParallaxSection>
+
+      {/* Floating Elements */}
+      <div
+        className="fixed top-1/5 left-4 w-2 h-2 bg-primary/30 rounded-full animate-ping"
+        style={{ animationDelay: "4s" }}
+      ></div>
+      <div
+        className="fixed top-4/5 right-4 w-1 h-1 bg-primary/40 rounded-full animate-pulse"
+        style={{ animationDelay: "5s" }}
+      ></div>
     </div>
   )
 }

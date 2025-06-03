@@ -1,10 +1,19 @@
 "use client"
 
 import type React from "react"
+
+import { Inter } from "next/font/google"
 import "./globals.css"
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
+import { ThemeProvider } from "@/components/theme-provider"
+import { Toaster } from "@/components/ui/toaster"
 import { usePathname } from "next/navigation"
+import { useEffect } from "react"
+import AOS from "aos"
+import "aos/dist/aos.css"
+
+const inter = Inter({ subsets: ["latin"] })
 
 export default function ClientLayout({
   children,
@@ -12,20 +21,26 @@ export default function ClientLayout({
   children: React.ReactNode
 }) {
   const pathname = usePathname()
-  const isAdminPage = pathname?.startsWith("/admin")
+  const isAdminRoute = pathname?.startsWith("/admin")
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+      offset: 100,
+      easing: "ease-out-cubic",
+    })
+  }, [])
 
   return (
-    <html lang="en" className="scroll-smooth">
-      <head>
-        <title>Inertia - Modern Interior Design Studio</title>
-        <meta name="description" content="Inertia Free Bootstrap 5 Template for Furniture and Interior Design Websites" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-        <meta name="generator" content="v0.dev" />
-      </head>
-      <body className="font-sans bg-white text-gray-600 text-sm leading-7 antialiased">
-        {!isAdminPage && <Navbar />}
-        <main className={isAdminPage ? "min-h-screen" : "min-h-screen"}>{children}</main>
-        {!isAdminPage && <Footer />}
+    <html lang="en" suppressHydrationWarning>
+      <body className={inter.className}>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
+          {!isAdminRoute && <Navbar />}
+          <main className="min-h-screen">{children}</main>
+          {!isAdminRoute && <Footer />}
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   )
